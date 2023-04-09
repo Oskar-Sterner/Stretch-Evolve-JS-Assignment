@@ -109,6 +109,7 @@ form {
     }
     @include m.desktop {
       width: 60%;
+      height: 330px;
       font-size: 1.2em;
       padding: 25px;
     }
