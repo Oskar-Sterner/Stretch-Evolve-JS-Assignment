@@ -1,0 +1,211 @@
+@use "variables" as var;
+@use "mixins" as m;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+body {
+  margin: 0;
+  background-color: var.$primary;
+  font-family: "Lato", sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 3.333em;
+  }
+
+  button {
+    all: unset;
+    width: 250px;
+    background-color: var.$blue;
+    border-radius: 10px;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: 2.333em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    transition: 300ms;
+    &:hover {
+      transform: scale(1.05);
+      background-color: var.$secondary;
+      color: var.$blue;
+      cursor: pointer;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @include m.desktop {
+      font-size: 1em;
+    }
+    font-size: 2em;
+  }
+
+  input {
+    @include m.desktop {
+      font-size: 1em;
+    }
+    font-size: 2em;
+    all: unset;
+    background-color: var.$secondary;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    &:focus {
+      outline: none;
+      background-color: var.$secondary;
+    }
+  }
+
+  select {
+    all: unset;
+    background-color: var.$secondary;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+
+    @include m.desktop {
+      font-size: 1em;
+    }
+    font-size: 2em;
+  }
+}
+
+.profiles-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 50px;
+  @include m.tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  @include m.desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  #filter-not-found {
+    grid-column: 1 / -1;
+    text-align: center;
+    @include m.desktop {
+      font-size: 1em;
+    }
+    font-size: 2em;
+  }
+  #profile {
+    width: 75%;
+    @include m.tablet {
+      width: 60%;
+      font-size: 1em;
+      padding: 25px;
+    }
+    @include m.desktop {
+      width: 60%;
+      font-size: 1.2em;
+      padding: 25px;
+    }
+    height: auto;
+    margin: 0 auto;
+    padding: 50px;
+    display: grid;
+    transition: 300ms;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 153, 255, 0.1) 10.93%,
+      rgba(255, 255, 255, 0) 90%
+    );
+    border-radius: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    font-size: 2.3em;
+    gap: 0px 0px;
+    grid-template-areas:
+      "pfp name"
+      "age gender"
+      "location username";
+
+    .pfp {
+      grid-area: pfp;
+    }
+    .name {
+      grid-area: name;
+    }
+    .age {
+      grid-area: age;
+    }
+    .gender {
+      grid-area: gender;
+    }
+    .location {
+      grid-area: location;
+    }
+    .username {
+      grid-area: username;
+    }
+
+    .pfp,
+    .name,
+    .age,
+    .gender,
+    .location,
+    .username {
+      display: flex;
+      padding: 5px;
+    }
+
+    .name,
+    .age,
+    .gender,
+    .location,
+    .username {
+      width: 100%;
+      transition: 300ms;
+      &:hover {
+        text-decoration: underline;
+        color: var.$blue !important;
+      }
+      @include m.tablet {
+        padding: 10px;
+      }
+    }
+
+    p {
+      background: linear-gradient(
+        -135deg,
+        rgba(0, 153, 255, 0.1) 10.93%,
+        rgba(255, 255, 255, 0) 90%
+      );
+      width: 80%;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 25%;
+      @include m.tablet {
+        width: 55%;
+      }
+      @include m.desktop {
+        width: 30%;
+      }
+      border: 5px solid var.$blue;
+    }
+
+    &:hover {
+      -webkit-box-shadow: 0px 0px 70px 2px rgba(13, 166, 255, 0.7);
+      -moz-box-shadow: 0px 0px 70px 2px rgba(13, 166, 255, 0.7);
+      box-shadow: 0px 0px 70px 2px rgba(13, 166, 255, 0.7);
+      transform: scale(1.04);
+    }
+  }
+}
